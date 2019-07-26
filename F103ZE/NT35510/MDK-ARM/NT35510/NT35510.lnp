@@ -1,0 +1,27 @@
+--cpu Cortex-M3
+"nt35510\startup_stm32f103xe.o"
+"nt35510\nt35510_lcd.o"
+"nt35510\main.o"
+"nt35510\gpio.o"
+"nt35510\fsmc.o"
+"nt35510\stm32f1xx_it.o"
+"nt35510\stm32f1xx_hal_msp.o"
+"nt35510\stm32f1xx_hal_gpio_ex.o"
+"nt35510\stm32f1xx_ll_fsmc.o"
+"nt35510\stm32f1xx_hal_sram.o"
+"nt35510\stm32f1xx_hal_tim.o"
+"nt35510\stm32f1xx_hal_tim_ex.o"
+"nt35510\stm32f1xx_hal.o"
+"nt35510\stm32f1xx_hal_rcc.o"
+"nt35510\stm32f1xx_hal_rcc_ex.o"
+"nt35510\stm32f1xx_hal_gpio.o"
+"nt35510\stm32f1xx_hal_dma.o"
+"nt35510\stm32f1xx_hal_cortex.o"
+"nt35510\stm32f1xx_hal_pwr.o"
+"nt35510\stm32f1xx_hal_flash.o"
+"nt35510\stm32f1xx_hal_flash_ex.o"
+"nt35510\system_stm32f1xx.o"
+--library_type=microlib --strict --scatter "NT35510\NT35510.sct"
+--summary_stderr --info summarysizes --map --load_addr_map_info --xref --callgraph --symbols
+--info sizes --info totals --info unused --info veneers
+--list "NT35510.map" -o NT35510\NT35510.axf
