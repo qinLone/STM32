@@ -56,6 +56,10 @@ static signed char gyro_orientation[9] = { 1, 0, 0,
        ZXY  001_000_010
        ZYX  000_001_010
 */
+																					 
+//Ò»½×»¥²¹ÂË²¨²ÎÊý
+#define FILTER_NUMBER 0.95
+
 
 
 void MPU_6050_Init(void);
@@ -69,5 +73,7 @@ unsigned short inv_row_2_scale(const signed char *row);
 unsigned char run_self_test(void);
 unsigned char mpu_dmp_init(void);
 unsigned char mpu_dmp_get_data(float *pitch,float *roll,float *yaw);
+
+float Comp_filter();
 
 #endif

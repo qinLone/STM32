@@ -27,26 +27,16 @@ Project File Date:  07/22/2019
 <h2>Output:</h2>
 *** Using Compiler 'V5.06 update 6 (build 750)', folder: 'C:\Tools\MDK_ARM\ARM\ARMCC\Bin'
 Build target 'GYRO'
-compiling mpu6050.c...
-../Inc/mpu6050.h(73): warning:  #1-D: last line of file ends without a newline
+compiling main.c...
+../Inc/mpu6050.h(77): warning:  #1295-D: Deprecated declaration Comp_filter - give arg types
+  float Comp_filter();
+../Inc/mpu6050.h(79): warning:  #1-D: last line of file ends without a newline
   #endif
-..\Src\mpu6050.c(27): warning:  #550-D: variable "status"  was set but never used
-  	HAL_StatusTypeDef status;
-..\Src\mpu6050.c(28): warning:  #550-D: variable "flag"  was set but never used
-  	HAL_I2C_StateTypeDef flag;
-..\Src\mpu6050.c(90): warning:  #550-D: variable "status"  was set but never used
-  	HAL_StatusTypeDef status;
-..\Src\mpu6050.c(91): warning:  #177-D: variable "flag"  was declared but never referenced
-  	HAL_I2C_StateTypeDef flag;
-..\Src\mpu6050.c(99): warning:  #177-D: variable "lingmin"  was declared but never referenced
-  	short  lingmin=16384;//¡È√Ù∂» 16384 
-..\Src\mpu6050.c(100): warning:  #177-D: variable "tuol"  was declared but never referenced
-  	float tuol=16.4f;
-..\Src\mpu6050.c: 7 warnings, 0 errors
+../Src/main.c: 2 warnings, 0 errors
 linking...
-Program Size: Code=19918 RO-data=6034 RW-data=96 ZI-data=1120  
+Program Size: Code=19918 RO-data=6034 RW-data=108 ZI-data=1116  
 FromELF: creating hex file...
-"GYRO\GYRO.axf" - 0 Error(s), 7 Warning(s).
+"GYRO\GYRO.axf" - 0 Error(s), 2 Warning(s).
 
 <h2>Software Packages used:</h2>
 

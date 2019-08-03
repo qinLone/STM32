@@ -115,6 +115,9 @@ int main(void)
 		OLED_ShowNum_float(0,0,pitch,2);
 		OLED_ShowNum_float(0,2,roll,2);
 		OLED_ShowNum_float(0,4,yaw,2);
+		
+//		pitch=Comp_filter();
+//		OLED_ShowNum_float(0,0,pitch,2);
 
 			//read_all();
     /* USER CODE BEGIN 3 */

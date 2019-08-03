@@ -36,7 +36,7 @@ I (../Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_pwr_ex.h)(0x5D05CFF0)
 I (../Inc/i2c.h)(0x5D345801)
 I (C:\Tools\MDK_ARM\ARM\ARMCC\include\stdio.h)(0x5CEB79E2)
 I (../Inc/codetab.h)(0x5C56A170)
-F (../Src/main.c)(0x5D3A7C66)(--c99 -c --cpu Cortex-M4.fp -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I ../Inc -I ../Drivers/STM32L4xx_HAL_Driver/Inc -I ../Drivers/STM32L4xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32L4xx/Include -I ../Drivers/CMSIS/Include -I ..\eMPL-I.\RTE\_GYRO-IC:\Users\nbperson\AppData\Local\Arm\Packs\ARM\CMSIS\5.5.1\CMSIS\Core\Include-IC:\Users\nbperson\AppData\Local\Arm\Packs\Keil\STM32L4xx_DFP\2.2.0\Drivers\CMSIS\Device\ST\STM32L4xx\Include-D__UVISION_VERSION="528" -D_RTE_ -DSTM32L432xx -DUSE_HAL_DRIVER -DSTM32L432xx-o gyro\main.o --omf_browse gyro\main.crf --depend gyro\main.d)
+F (../Src/main.c)(0x5D44EBB7)(--c99 -c --cpu Cortex-M4.fp -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I ../Inc -I ../Drivers/STM32L4xx_HAL_Driver/Inc -I ../Drivers/STM32L4xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32L4xx/Include -I ../Drivers/CMSIS/Include -I ..\eMPL-I.\RTE\_GYRO-IC:\Users\nbperson\AppData\Local\Arm\Packs\ARM\CMSIS\5.5.1\CMSIS\Core\Include-IC:\Users\nbperson\AppData\Local\Arm\Packs\Keil\STM32L4xx_DFP\2.2.0\Drivers\CMSIS\Device\ST\STM32L4xx\Include-D__UVISION_VERSION="528" -D_RTE_ -DSTM32L432xx -DUSE_HAL_DRIVER -DSTM32L432xx-o gyro\main.o --omf_browse gyro\main.crf --depend gyro\main.d)
 I (../Inc/main.h)(0x5D345802)
 I (../Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal.h)(0x5D05CFF0)
 I (../Inc/stm32l4xx_hal_conf.h)(0x5D345802)
@@ -70,7 +70,7 @@ I (../Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_pwr_ex.h)(0x5D05CFF0)
 I (../Inc/i2c.h)(0x5D345801)
 I (../Inc/gpio.h)(0x5D345801)
 I (../Inc/oled.h)(0x5C56A150)
-I (../Inc/mpu6050.h)(0x5D3560D7)
+I (../Inc/mpu6050.h)(0x5D44E9B9)
 I (..\eMPL\inv_mpu.h)(0x5BDAA945)
 I (..\eMPL\inv_mpu_dmp_motion_driver.h)(0x50CA9A0C)
 I (C:\Tools\MDK_ARM\ARM\ARMCC\include\math.h)(0x5CEB79D6)
@@ -279,8 +279,8 @@ I (../Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_i2c_ex.h)(0x5D05CFF0)
 I (../Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_pwr.h)(0x5D05CFF0)
 I (../Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_pwr_ex.h)(0x5D05CFF0)
 F (..\eMPL\inv_mpu_dmp_motion_driver.h)(0x50CA9A0C)()
-F (..\Src\mpu6050.c)(0x5D3A7FB1)(--c99 -c --cpu Cortex-M4.fp -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I ../Inc -I ../Drivers/STM32L4xx_HAL_Driver/Inc -I ../Drivers/STM32L4xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32L4xx/Include -I ../Drivers/CMSIS/Include -I ..\eMPL-I.\RTE\_GYRO-IC:\Users\nbperson\AppData\Local\Arm\Packs\ARM\CMSIS\5.5.1\CMSIS\Core\Include-IC:\Users\nbperson\AppData\Local\Arm\Packs\Keil\STM32L4xx_DFP\2.2.0\Drivers\CMSIS\Device\ST\STM32L4xx\Include-D__UVISION_VERSION="528" -D_RTE_ -DSTM32L432xx -DUSE_HAL_DRIVER -DSTM32L432xx-o gyro\mpu6050.o --omf_browse gyro\mpu6050.crf --depend gyro\mpu6050.d)
-I (../Inc/mpu6050.h)(0x5D3560D7)
+F (..\Src\mpu6050.c)(0x5D44EA2B)(--c99 -c --cpu Cortex-M4.fp -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I ../Inc -I ../Drivers/STM32L4xx_HAL_Driver/Inc -I ../Drivers/STM32L4xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32L4xx/Include -I ../Drivers/CMSIS/Include -I ..\eMPL-I.\RTE\_GYRO-IC:\Users\nbperson\AppData\Local\Arm\Packs\ARM\CMSIS\5.5.1\CMSIS\Core\Include-IC:\Users\nbperson\AppData\Local\Arm\Packs\Keil\STM32L4xx_DFP\2.2.0\Drivers\CMSIS\Device\ST\STM32L4xx\Include-D__UVISION_VERSION="528" -D_RTE_ -DSTM32L432xx -DUSE_HAL_DRIVER -DSTM32L432xx-o gyro\mpu6050.o --omf_browse gyro\mpu6050.crf --depend gyro\mpu6050.d)
+I (../Inc/mpu6050.h)(0x5D44E9B9)
 I (../Inc/main.h)(0x5D345802)
 I (../Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal.h)(0x5D05CFF0)
 I (../Inc/stm32l4xx_hal_conf.h)(0x5D345802)
@@ -316,7 +316,7 @@ I (..\eMPL\inv_mpu_dmp_motion_driver.h)(0x50CA9A0C)
 I (C:\Tools\MDK_ARM\ARM\ARMCC\include\math.h)(0x5CEB79D6)
 I (../Inc/i2c.h)(0x5D345801)
 I (../Inc/oled.h)(0x5C56A150)
-F (..\Inc\mpu6050.h)(0x5D3560D7)()
+F (..\Inc\mpu6050.h)(0x5D44E9B9)()
 F (../Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_i2c.c)(0x5D05CFF0)(--c99 -c --cpu Cortex-M4.fp -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I ../Inc -I ../Drivers/STM32L4xx_HAL_Driver/Inc -I ../Drivers/STM32L4xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32L4xx/Include -I ../Drivers/CMSIS/Include -I ..\eMPL-I.\RTE\_GYRO-IC:\Users\nbperson\AppData\Local\Arm\Packs\ARM\CMSIS\5.5.1\CMSIS\Core\Include-IC:\Users\nbperson\AppData\Local\Arm\Packs\Keil\STM32L4xx_DFP\2.2.0\Drivers\CMSIS\Device\ST\STM32L4xx\Include-D__UVISION_VERSION="528" -D_RTE_ -DSTM32L432xx -DUSE_HAL_DRIVER -DSTM32L432xx-o gyro\stm32l4xx_hal_i2c.o --omf_browse gyro\stm32l4xx_hal_i2c.crf --depend gyro\stm32l4xx_hal_i2c.d)
 I (../Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal.h)(0x5D05CFF0)
 I (../Inc/stm32l4xx_hal_conf.h)(0x5D345802)

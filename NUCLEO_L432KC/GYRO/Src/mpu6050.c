@@ -88,7 +88,6 @@ void MPU_6050_Init(void)
 void read_all(void)
 {
 	HAL_StatusTypeDef status;
-	HAL_I2C_StateTypeDef flag;
 	unsigned char tem[2]={0};
 	unsigned char  accbuff[6]={0};  //MPU_ACCEL_XOUTH_REG 加速度 
 	unsigned char tuoluo[6]={0};
@@ -289,4 +288,40 @@ unsigned char mpu_dmp_get_data(float *pitch,float *roll,float *yaw)
 		*yaw   = atan2(2*(q1*q2 + q0*q3),q0*q0+q1*q1-q2*q2-q3*q3) * 57.3;	//yaw
 	}else return 2;
 	return 0;
+}
+
+
+float Comp_filter()	//Y重力，X加速度一节互补滤波得到倾角
+{
+	unsigned char  accbuff[6]={0};  //MPU_ACCEL_XOUTH_REG 加速度 
+	unsigned char tuoluo[6]={0};
+	short aacx; //加速度
+	short toly;
+	float angle_ax;//由加速度计计算得到的角度
+	float angle_gy;//由陀螺仪计算得到的角度
+	float acc_x_errer=391.0,gyro_y_errer=0;//零点漂移值
+	static float gyro_y_last,acc_x_last;//低通滤波用参数
+	static float angle=0.00;
+	
+	HAL_I2C_Mem_Read(&hi2c3, ADDRESS_W, MPU_ACCEL_XOUTH_REG, 1, accbuff, 6, HAL_MAX_DELAY); 
+	aacx=((short)(accbuff[0]<<8))|accbuff[1];
+	HAL_I2C_Mem_Read(&hi2c3, ADDRESS_W, MPU_GYRO_XOUTH_REG, 1, tuoluo, 6, HAL_MAX_DELAY); 
+	toly=((unsigned short)(tuoluo[2]<<8))|tuoluo[3];
+	
+	aacx = 0.7*acc_x_last+0.3*aacx;			//对加速度进行低通滤波
+	acc_x_last=aacx;
+	aacx=aacx-acc_x_errer;//减去零点漂移
+	angle_ax=aacx/16384;//加速底转换成角度(弧度)
+	angle_ax=angle_ax*180/3.14159;//弧度转换成角度
+	
+	toly = 0.7*gyro_y_last+0.3*toly;			//对角速度进行低通滤波
+	gyro_y_last=toly;	
+	toly=toly-gyro_y_errer;	//减去零点漂移
+	toly=toly /16.384;	//由陀螺仪值计算角速度
+	angle_gy=angle_gy+toly*0.004;		//角速度转换成角度	
+	
+
+	angle=FILTER_NUMBER*(angle+angle_gy*0.004)+(1-FILTER_NUMBER)*angle_ax;//一阶互补滤波,4ms一次
+	
+	return angle;
 }
