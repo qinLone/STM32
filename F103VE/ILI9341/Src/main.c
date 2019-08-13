@@ -20,6 +20,7 @@
 
 /* Includes ------------------------------------------------------------------*/
 #include "main.h"
+#include "i2c.h"
 #include "gpio.h"
 #include "fsmc.h"
 
@@ -27,6 +28,7 @@
 /* USER CODE BEGIN Includes */
 #include "ili9341_lcd.h"
 #include "fonts.h"
+#include "mpu6050.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -47,7 +49,14 @@
 /* Private variables ---------------------------------------------------------*/
 
 /* USER CODE BEGIN PV */
+float pitch,roll,yaw; 		//欧拉角
+//pitch:俯仰角 精度:0.1°   范围:-90.0° <---> +90.0°
+//roll:横滚角  精度:0.1°   范围:-180.0°<---> +180.0°
+//yaw:航向角   精度:0.1°   范围:-180.0°<---> +180.0°
+unsigned char state=0;
+unsigned char rev_flag=0;
 
+char txt[20];
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -91,8 +100,14 @@ int main(void)
   /* Initialize all configured peripherals */
   MX_GPIO_Init();
   MX_FSMC_Init();
+  MX_I2C2_Init();
   /* USER CODE BEGIN 2 */
 	ILI9341_Init ();
+	LCD_SetBackColor(0x07E0);
+	ILI9341_Clear (0, 0, 240, 320 );
+	MPU_6050_Init();
+	state=mpu_dmp_init();
+	ILI9341_DispString_EN (0,60,"11111");
   /* USER CODE END 2 */
 
   /* Infinite loop */
@@ -100,8 +115,16 @@ int main(void)
   while (1)
   {
     /* USER CODE END WHILE */
-		LCD_Test();
+
     /* USER CODE BEGIN 3 */
+		
+		rev_flag=mpu_dmp_get_data(&pitch,&roll,&yaw);
+		sprintf(txt,"pitch is %f",pitch);
+		ILI9341_DispString_EN (0,0,txt);
+		sprintf(txt,"roll is %f",roll);
+		ILI9341_DispString_EN (0,20,txt);
+		sprintf(txt,"yaw is %f",yaw);
+		ILI9341_DispString_EN (0,40,txt);
   }
   /* USER CODE END 3 */
 }
@@ -141,101 +164,6 @@ void SystemClock_Config(void)
 }
 
 /* USER CODE BEGIN 4 */
-void LCD_Test(void)
-{
-	/*演示显示变量*/
-	static uint8_t testCNT = 0;	
-	char dispBuff[100];
-	
-	testCNT++;	
-	
-	LCD_SetFont(&Font8x16);
-	LCD_SetColors(RED,BLACK);
-
-  ILI9341_Clear(0,0,LCD_X_LENGTH,LCD_Y_LENGTH);	/* 清屏，显示全黑 */
-	/********显示字符串示例*******/
-  ILI9341_DispStringLine_EN(LINE(0),"BH 3.2 inch LCD para:");
-  ILI9341_DispStringLine_EN(LINE(1),"Image resolution:240x320 px");
-  ILI9341_DispStringLine_EN(LINE(2),"ILI9341 LCD driver");
-  ILI9341_DispStringLine_EN(LINE(3),"XPT2046 Touch Pad driver");
-  
-	/********显示变量示例*******/
-	LCD_SetFont(&Font16x24);
-	LCD_SetTextColor(GREEN);
-
-	/*使用c标准库把变量转化成字符串*/
-	sprintf(dispBuff,"Count : %d ",testCNT);
-  LCD_ClearLine(LINE(4));	/* 清除单行文字 */
-	
-	/*然后显示该字符串即可，其它变量也是这样处理*/
-	ILI9341_DispStringLine_EN(LINE(4),dispBuff);
-
-	/*******显示图形示例******/
-	LCD_SetFont(&Font24x32);
-  /* 画直线 */
-  
-  LCD_ClearLine(LINE(4));/* 清除单行文字 */
-	LCD_SetTextColor(BLUE);
-
-  ILI9341_DispStringLine_EN(LINE(4),"Draw line:");
-  
-	LCD_SetTextColor(RED);
-  ILI9341_DrawLine(50,170,210,230);  
-  ILI9341_DrawLine(50,200,210,240);
-  
-	LCD_SetTextColor(GREEN);
-  ILI9341_DrawLine(100,170,200,230);  
-  ILI9341_DrawLine(200,200,220,240);
-	
-	LCD_SetTextColor(BLUE);
-  ILI9341_DrawLine(110,170,110,230);  
-  ILI9341_DrawLine(130,200,220,240);
-  HAL_Delay(3000);
-  
-  ILI9341_Clear(0,16*8,LCD_X_LENGTH,LCD_Y_LENGTH-16*8);	/* 清屏，显示全黑 */
-  
-  
-  /*画矩形*/
-
-  LCD_ClearLine(LINE(4));	/* 清除单行文字 */
-	LCD_SetTextColor(BLUE);
-
-  ILI9341_DispStringLine_EN(LINE(4),"Draw Rect:");
-
-	LCD_SetTextColor(RED);
-  ILI9341_DrawRectangle(50,200,100,30,1);
-	
-	LCD_SetTextColor(GREEN);
-  ILI9341_DrawRectangle(160,200,20,40,0);
-	
-	LCD_SetTextColor(BLUE);
-  ILI9341_DrawRectangle(170,200,50,20,1);
-  
-  
-  HAL_Delay(3000);
-	
-	ILI9341_Clear(0,16*8,LCD_X_LENGTH,LCD_Y_LENGTH-16*8);	/* 清屏，显示全黑 */
-
-  /* 画圆 */
-  LCD_ClearLine(LINE(4));	/* 清除单行文字 */
-	LCD_SetTextColor(BLUE);
-	
-  ILI9341_DispStringLine_EN(LINE(4),"Draw Cir:");
-
-	LCD_SetTextColor(RED);
-  ILI9341_DrawCircle(100,200,20,0);
-	
-	LCD_SetTextColor(GREEN);
-  ILI9341_DrawCircle(100,200,10,1);
-	
-	LCD_SetTextColor(BLUE);
-	ILI9341_DrawCircle(140,200,20,0);
-
-  HAL_Delay(3000);
-  
-  ILI9341_Clear(0,16*8,LCD_X_LENGTH,LCD_Y_LENGTH-16*8);	/* 清屏，显示全黑 */
-
-}
 
 /* USER CODE END 4 */
 

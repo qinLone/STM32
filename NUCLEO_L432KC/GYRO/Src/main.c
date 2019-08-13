@@ -109,18 +109,12 @@ int main(void)
   while (1)
   {
     /* USER CODE END WHILE */
+
+    /* USER CODE BEGIN 3 */
 		rev_flag=mpu_dmp_get_data(&pitch,&roll,&yaw);
-		
-		OLED_ShowNum_int(20,7,rev_flag,1);
 		OLED_ShowNum_float(0,0,pitch,2);
 		OLED_ShowNum_float(0,2,roll,2);
 		OLED_ShowNum_float(0,4,yaw,2);
-		
-//		pitch=Comp_filter();
-//		OLED_ShowNum_float(0,0,pitch,2);
-
-			//read_all();
-    /* USER CODE BEGIN 3 */
 	}
   /* USER CODE END 3 */
 }
