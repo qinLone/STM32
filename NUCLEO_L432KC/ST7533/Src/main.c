@@ -93,7 +93,7 @@ int main(void)
   /* USER CODE BEGIN 2 */
 	lcd7735_ini();
   /* USER CODE END 2 */
-
+	int i;
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
   while (1)
@@ -104,6 +104,8 @@ int main(void)
 		lcd7735_fillrect(0,0,128,160,GREEN);
 		lcd7735_fillrect(0,0,128,160,YELLOW);
 		lcd7735_fillrect(0,0,128,160,BLACK);
+		for(i=0;i<128;i++)
+			lcd7735_putpix(0,i,GREEN);
   }
   /* USER CODE END 3 */
 }
